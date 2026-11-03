@@ -1,0 +1,13 @@
+{
+  "name": "ai-use-case-intake",
+  "version": "1.0.0",
+  "description": "The front door for enterprise AI: intake, EU AI Act and GDPR triage, value and feasibility scoring, required controls and a human decision trail.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "test": "node --test tests/*.test.js"
+  },
+  "engines": { "node": ">=20" }
+}
