@@ -2,7 +2,7 @@
 
 **The front door for enterprise AI: one intake that decides what is worth doing, what the EU AI Act and GDPR require, and who has to approve it, before anyone builds or buys.**
 
-[**▶ Live demo**](https://geopap.github.io/ai-use-case-intake/) · [Method](docs/METHOD.md) · Companion projects: [AI Eval Workbench](https://github.com/geopap/ai-eval-workbench) · [AI Portfolio Office](https://github.com/geopap/ai-portfolio-office)
+[**▶ Live demo**](https://geopap.github.io/ai-use-case-intake/) · [Method](docs/METHOD.md) · AI life cycle: **decide** → build with [Claude Code SDLC](https://github.com/geopap/claude-code-sdlc) → prove with [AI Eval Workbench](https://github.com/geopap/ai-eval-workbench) → govern with [AI Portfolio Office](https://github.com/geopap/ai-portfolio-office)
 
 ![Use-case register](docs/screenshots/register.png)
 
