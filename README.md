@@ -20,6 +20,14 @@ This tool is that front door. It gives every idea the same short intake, an expl
 
 > **Design principle: governance should speed up good ideas, not just stop bad ones.** Minimal-risk internal tools get a three-day fast track. High-risk systems get the scrutiny the law requires. Prohibited practices are stopped at intake.
 
+## Who it's for
+
+| | What they get |
+|---|---|
+| **Product leaders** | One discovery and prioritisation step for every AI idea: a KPI, a business case, payback and a clear *pursue now / invest to enable / quick experiment / park* call before the roadmap commits |
+| **Technology leaders** | Demand management with build-vs-buy, data, integration and skills readiness made explicit, and a hand-over to delivery only after approval |
+| **AI governance and risk** | An explainable EU AI Act and GDPR classification with the article cited, proportionate review routes and 30 controls tracked to completion |
+
 ## What it does
 
 | Step | What happens |
