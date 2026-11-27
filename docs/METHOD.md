@@ -1,6 +1,8 @@
 # Method: how an AI use case is triaged
 
-> Indicative and for illustration, not legal advice. Before relying on a classification, confirm it with your legal and data-protection functions. Application dates for the EU AI Act's high-risk obligations have been subject to legislative change, so check the current position.
+> Indicative and for illustration, not legal advice. Before relying on a classification, confirm it with your legal and data-protection functions.
+>
+> **Legal basis:** Regulation (EU) 2024/1689 (AI Act) as amended by **Regulation (EU) 2026/1744 (Digital Omnibus on AI)**, published in the Official Journal on 24 July 2026. Last checked on 27 November 2026.
 
 ## 1. Principles
 
@@ -16,13 +18,29 @@ The flow stops at the first match:
 
 | Step | Question | Outcome |
 |---|---|---|
-| 1 | Does it use one of the eight **prohibited practices** in Art. 5(1)? | **Prohibited** → do not proceed |
+| 1 | Does it use one of the ten **prohibited practices** in Art. 5(1)? | **Prohibited** → do not proceed |
 | 2 | Is it a **safety component** of a product under EU harmonisation legislation (Annex I)? | **High-risk** (Art. 6(1)) |
 | 3 | Is it used in an **Annex III area**: biometrics, critical infrastructure, education, employment, essential services (credit, insurance, benefits, emergency calls), law enforcement, migration, or justice and democracy? | **High-risk** (Art. 6(2)), unless an Art. 6(3) exception applies, which is never possible when the system profiles natural persons |
 | 4 | Does it trigger a **transparency duty**: interaction with people, synthetic content, emotion recognition or biometric categorisation, deep fakes? | **Limited risk** (Art. 50). These duties also apply on top of high-risk, never instead of it. |
 | 5 | None of the above | **Minimal risk**: baseline controls only |
 
 **Provider or deployer?** Building or substantially modifying the system makes the organisation the *provider* (Art. 16: risk management, documentation, quality management system, conformity assessment). Buying and using it as intended makes it the *deployer* (Art. 26: use as instructed, human oversight, logs, informing people). A deployer becomes a provider if it substantially modifies the system or changes its intended purpose (Art. 25(1)). Deployers using credit or insurance scoring also need a fundamental rights impact assessment (Art. 27).
+
+**A safety component** is a component whose intended purpose is to prevent or mitigate risks to the health and safety of persons or property, or whose failure endangers them (Art. 3(14) as amended). Assistance, efficiency or convenience functions inside a regulated product are not safety components on that ground alone.
+
+**Application dates** (Art. 113 as amended):
+
+| From | What applies |
+|---|---|
+| 2 February 2025 | Prohibited practices, Art. 5(1)(a)–(h); AI literacy, Art. 4 |
+| 2 August 2025 | General-purpose AI model rules (Chapter V) |
+| 27 July 2026 | Amended AI literacy duty: providers and deployers take measures to support AI literacy of staff and others acting on their behalf; no specific level must be guaranteed |
+| 2 August 2026 | General application, including transparency duties (Art. 50); national market surveillance authorities supervise and enforce |
+| 2 December 2026 | New prohibitions, Art. 5(1)(ba) and (bb): non-consensual intimate imagery and child sexual abuse material. Art. 50(2) marking for generative systems already on the market |
+| 2 December 2027 | High-risk obligations for Annex III systems |
+| 2 August 2028 | High-risk obligations for systems in Annex I products |
+
+The intake classifies by what the system *is*, not by when the obligations start. A high-risk system is screened as high-risk today, with the date it must comply.
 
 ## 3. GDPR screening
 

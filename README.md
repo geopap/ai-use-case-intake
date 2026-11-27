@@ -33,7 +33,7 @@ This tool is that front door. It gives every idea the same short intake, an expl
 | Step | What happens |
 |---|---|
 | **Intake** | Six short steps: what the AI does, for whom, build or buy, value and cost, feasibility, EU AI Act screening, data protection. A live panel reclassifies the use case as you answer. |
-| **Classification** | Rule-based EU AI Act screening: prohibited practices (Art. 5), product safety (Art. 6(1)), the Annex III high-risk areas, the Art. 6(3) exceptions (never for profiling), transparency duties (Art. 50), and the provider vs deployer role. **Every result cites the article that produced it.** |
+| **Classification** | Rule-based EU AI Act screening: prohibited practices (Art. 5), product safety (Art. 6(1)), the Annex III high-risk areas, the Art. 6(3) exceptions (never for profiling), transparency duties (Art. 50), and the provider vs deployer role. **Every result cites the article that produced it**, and high-risk results show the date the obligations apply. Up to date with the **Digital Omnibus** (Regulation (EU) 2026/1744): the new prohibitions, the amended AI literacy duty and the postponed high-risk dates. |
 | **GDPR** | Personal data triggers a lawful basis and a record of processing. Two or more of the nine EDPB criteria make a DPIA required. Automated decisions trigger Art. 22 safeguards. |
 | **Value & feasibility** | Benefit, cost, payback, strategic alignment, confidence and time to value, plus data, technology, skills, integration and change readiness. The result is a quadrant: *pursue now, invest to enable, quick experiment, park*. |
 | **Review route** | Fast track (3 days) · Standard review (10 days) · Enhanced review for high-risk (20 days) · Do not proceed. |
@@ -109,7 +109,7 @@ Security baseline: a strict Content-Security-Policy, escaping of all output, no 
 
 Built by **George Papadongonas**, a digital leader focused on **AI value creation**: turning AI from pilots into measurable P&L impact, with the governance, compliance and security that let it scale.
 
-*All data in this repository is synthetic. **Varnholt Group** is a fictional company. The regulatory mapping is indicative and is not legal advice. Check current application dates for the high-risk obligations, which have been subject to legislative change.*
+*All data in this repository is synthetic. **Varnholt Group** is a fictional company. The regulatory mapping is indicative and is not legal advice. It reflects the AI Act as amended by the Digital Omnibus (Regulation (EU) 2026/1744), checked on 27 November 2026.*
 
 ## License
 

@@ -1,7 +1,7 @@
 // Deterministic triage engine: risk classification, value and feasibility scoring,
 // review path and required controls. Pure functions — no DOM, no network.
 
-import { PROHIBITED, ANNEX_III, DEROGATIONS, TRANSPARENCY, DPIA_CRITERIA, OPTIONS, SCORING, PATHS } from './framework.js';
+import { PROHIBITED, ANNEX_III, DEROGATIONS, TRANSPARENCY, DPIA_CRITERIA, OPTIONS, SCORING, PATHS, HIGH_RISK_FROM } from './framework.js';
 import { controlsFor } from './controls.js';
 
 const find = (list, key) => list.find((x) => x.key === key);
@@ -46,10 +46,18 @@ export function classify(uc) {
   }
   if (tier === 'minimal' && !derogationApplied) reasons.push({ text: 'No prohibited practice, no high-risk area and no transparency trigger.', ref: 'Art. 5, 6, 50' });
 
-  if (tier === 'high') notes.push(role === 'Provider'
-    ? 'As provider you carry the full high-risk obligations (Art. 16) — plan for conformity assessment before go-live.'
-    : 'As deployer (Art. 26) you rely on the provider’s conformity. A substantial modification or new intended purpose would make you the provider (Art. 25(1)).');
-  if (uc.annexIII?.includes('critical-infra')) notes.push('Critical infrastructure is high-risk only for safety components. Pure commercial forecasting usually is not — confirm with Legal.');
+  const upcoming = prohibited.filter((p) => p.from);
+  if (upcoming.length) notes.push(`${upcoming.map((p) => p.ref).join(' and ')} applies from ${upcoming[0].from}. Do not build or buy a system for this purpose now.`);
+  if (tier === 'high') {
+    notes.push(uc.safetyComponent
+      ? `High-risk obligations for Annex I product systems apply from ${HIGH_RISK_FROM.annexI} (Art. 113 as amended). Design for them now: conformity takes time.`
+      : `High-risk obligations for Annex III systems apply from ${HIGH_RISK_FROM.annexIII} (Art. 113 as amended). Design for them now: conformity takes time.`);
+    notes.push(role === 'Provider'
+      ? 'As provider you carry the full high-risk obligations (Art. 16) — plan for conformity assessment before go-live.'
+      : 'As deployer (Art. 26) you rely on the provider’s conformity. A substantial modification or new intended purpose would make you the provider (Art. 25(1)).');
+  }
+  if (tier === 'limited') notes.push('Transparency duties (Art. 50) apply since 2 August 2026.');
+  if (uc.annexIII?.includes('critical-infra')) notes.push('Critical infrastructure is high-risk only for safety components: components whose intended purpose is to prevent or mitigate risks to health and safety of persons or property (Art. 3(14) as amended). Pure commercial forecasting usually is not — confirm with Legal.');
   if (uc.aiType === 'genai' && uc.sourcing === 'build') notes.push('Fine-tuning a general-purpose model and placing it on the market can trigger GPAI provider duties (Art. 53).');
   if (uc.decision === 'automated' && tier !== 'high') notes.push('Automated decisions about people: check GDPR Art. 22 even though the AI Act tier is not high.');
 

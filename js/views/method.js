@@ -1,10 +1,12 @@
 import { esc, section, pageHead, tier, path } from '../ui.js';
-import { PROHIBITED, ANNEX_III, DEROGATIONS, TRANSPARENCY, DPIA_CRITERIA, SCORING, PATHS, FRAMEWORK_VERSION } from '../framework.js';
+import { PROHIBITED, ANNEX_III, DEROGATIONS, TRANSPARENCY, DPIA_CRITERIA, SCORING, PATHS, FRAMEWORK_VERSION, LEGAL_BASIS, TIMELINE } from '../framework.js';
 import { CONTROLS } from '../controls.js';
+
+const fmtDate = (iso) => new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 
 export function render() {
   const flow = [
-    ['1', 'Prohibited practice?', 'Any of the eight Art. 5(1) practices', `${tier('prohibited')} → ${path('stop', 'Do not proceed')}`],
+    ['1', 'Prohibited practice?', `Any of the ${PROHIBITED.length} Art. 5(1) practices`, `${tier('prohibited')} → ${path('stop', 'Do not proceed')}`],
     ['2', 'Safety component of a regulated product?', 'Annex I product legislation (Art. 6(1))', `${tier('high')}`],
     ['3', 'Used in an Annex III area?', `${ANNEX_III.length} areas — employment, credit, insurance, education, biometrics…`, `${tier('high')} unless an Art. 6(3) exception applies — and never when the system profiles people`],
     ['4', 'Transparency trigger?', 'Interaction, synthetic content, emotion recognition, deep fakes (Art. 50)', `${tier('limited')} (adds duties on top of high-risk, never downgrades it)`],
@@ -45,6 +47,7 @@ export function render() {
         <h3>Transparency — Art. 50</h3><ul class="reasons small">${TRANSPARENCY.map((p) => `<li>${esc(p.label)} <code>${esc(p.ref)}</code></li>`).join('')}</ul>`)}
       ${section('High-risk areas & DPIA criteria', `<h3>Annex III</h3><ul class="reasons small">${ANNEX_III.map((p) => `<li><b>${esc(p.area)}:</b> ${esc(p.label)} <code>${esc(p.ref)}</code></li>`).join('')}</ul>
         <h3>EDPB DPIA criteria</h3><ul class="reasons small">${DPIA_CRITERIA.map((p) => `<li>${esc(p.label)}</li>`).join('')}</ul>
-        <div class="banner">Timing: the prohibitions apply since 2 February 2025 and the general-purpose AI rules since 2 August 2025. Check the current application dates for the high-risk obligations, which have been subject to legislative change.</div>`)}
+        <h3>Application dates</h3><ul class="reasons small">${TIMELINE.map((x) => `<li><b>${esc(fmtDate(x.date))}</b>: ${esc(x.what)}</li>`).join('')}</ul>
+        <div class="banner">Legal basis: ${esc(LEGAL_BASIS.act)}, as amended by ${esc(LEGAL_BASIS.amendedBy)}. Last checked against the Official Journal on ${esc(fmtDate(LEGAL_BASIS.checked))}. Indicative, not legal advice.</div>`)}
     </div>`;
 }

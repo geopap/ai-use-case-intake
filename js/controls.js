@@ -8,7 +8,7 @@ export const CONTROLS = [
   // Baseline — every use case
   { id: 'C-OWN', group: 'Baseline', name: 'Named business owner and technical owner', when: () => true, aiact: '—', iso: 'A.3 Internal organisation', other: 'NIST GOVERN' },
   { id: 'C-INV', group: 'Baseline', name: 'Entry in the AI inventory with purpose, data and owners', when: () => true, aiact: '—', iso: 'A.6 AI system life cycle', other: 'NIST MAP' },
-  { id: 'C-LIT', group: 'Baseline', name: 'AI literacy training for users and operators', when: () => true, aiact: 'Art. 4', iso: 'A.4 Resources · cl. 7.2', other: 'NIST GOVERN' },
+  { id: 'C-LIT', group: 'Baseline', name: 'AI literacy measures for staff and others using AI on the organisation’s behalf, by role, with an internal record', when: () => true, aiact: 'Art. 4', iso: 'A.4 Resources · cl. 7.2', other: 'NIST GOVERN' },
   { id: 'C-KPI', group: 'Value', name: 'Baseline and target for the value KPI before launch — no KPI, no go', when: () => true, aiact: '—', iso: 'cl. 6.2 Objectives', other: 'Benefits realisation' },
 
   // Transparency
