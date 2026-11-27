@@ -1,12 +1,34 @@
 // Screening framework as code: every question, threshold and legal reference the
 // triage engine uses. References are indicative and for illustration — not legal advice.
 
-export const FRAMEWORK_VERSION = '2.0.0';
+export const FRAMEWORK_VERSION = '2.1.0';
 
-// EU AI Act, Article 5(1) — prohibited practices (applicable since 2 February 2025).
+// The legal text this framework encodes, and when it was last checked against the Official Journal.
+export const LEGAL_BASIS = {
+  act: 'Regulation (EU) 2024/1689 (AI Act)',
+  amendedBy: 'Regulation (EU) 2026/1744 (Digital Omnibus on AI), OJ L of 24 July 2026',
+  checked: '2026-11-27',
+};
+
+// Application dates (Art. 113 as amended by Regulation (EU) 2026/1744).
+export const TIMELINE = [
+  { date: '2025-02-02', what: 'Prohibited practices (Art. 5) and AI literacy (Art. 4)' },
+  { date: '2025-08-02', what: 'General-purpose AI model rules (Chapter V)' },
+  { date: '2026-07-27', what: 'Amended AI literacy duty: take measures to support AI literacy; no specific level must be guaranteed (Art. 4)' },
+  { date: '2026-08-02', what: 'General application, including transparency duties (Art. 50); national authorities start supervising and enforcing' },
+  { date: '2026-12-02', what: 'New prohibitions on non-consensual intimate imagery and child sexual abuse material (Art. 5(1)(ba), (bb)); Art. 50(2) marking for generative systems already on the market' },
+  { date: '2027-12-02', what: 'High-risk obligations for Annex III systems (Art. 6(2))' },
+  { date: '2028-08-02', what: 'High-risk obligations for Annex I product systems (Art. 6(1))' },
+];
+export const HIGH_RISK_FROM = { annexIII: '2 December 2027', annexI: '2 August 2028' };
+
+// EU AI Act, Article 5(1) — prohibited practices (points (a)–(h) since 2 February 2025;
+// points (ba) and (bb), added by Regulation (EU) 2026/1744, from 2 December 2026).
 export const PROHIBITED = [
   { key: 'manipulation', ref: 'Art. 5(1)(a)', label: 'Uses subliminal, manipulative or deceptive techniques that materially distort behaviour and are likely to cause significant harm' },
   { key: 'vulnerability', ref: 'Art. 5(1)(b)', label: 'Exploits vulnerabilities due to age, disability or a specific social or economic situation' },
+  { key: 'intimate-imagery', ref: 'Art. 5(1)(ba)', from: '2 December 2026', label: 'Generates or manipulates realistic intimate or sexually explicit images, video or audio of an identifiable person without their explicit consent' },
+  { key: 'csam', ref: 'Art. 5(1)(bb)', from: '2 December 2026', label: 'Generates or manipulates child sexual abuse material' },
   { key: 'social-scoring', ref: 'Art. 5(1)(c)', label: 'Scores people on social behaviour or personal traits, leading to detrimental or unjustified treatment' },
   { key: 'crime-prediction', ref: 'Art. 5(1)(d)', label: 'Predicts the risk of a person committing a crime based solely on profiling or personality traits' },
   { key: 'face-scraping', ref: 'Art. 5(1)(e)', label: 'Builds facial-recognition databases by untargeted scraping of images from the internet or CCTV' },

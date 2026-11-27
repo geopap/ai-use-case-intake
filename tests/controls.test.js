@@ -90,3 +90,21 @@ test('audit chain detects tampering', async () => {
   log[0].detail = 'changed';
   assert.equal((await verifyChain(log)).ok, false);
 });
+
+test('framework records its legal basis and an ordered timeline', async () => {
+  const { LEGAL_BASIS, TIMELINE, PROHIBITED } = await import('../js/framework.js');
+  assert.match(LEGAL_BASIS.amendedBy, /2026\/1744/);
+  assert.match(LEGAL_BASIS.checked, /^\d{4}-\d{2}-\d{2}$/);
+  const dates = TIMELINE.map((x) => x.date);
+  assert.deepEqual(dates, [...dates].sort(), 'timeline in date order');
+  assert.equal(PROHIBITED.length, 10);
+  assert.equal(new Set(PROHIBITED.map((p) => p.key)).size, PROHIBITED.length, 'unique keys');
+});
+
+test('AI literacy applies to every use case, as measures rather than a guaranteed level', async () => {
+  const { CONTROLS } = await import('../js/controls.js');
+  const lit = CONTROLS.find((c) => c.id === 'C-LIT');
+  assert.equal(lit.aiact, 'Art. 4');
+  assert.equal(lit.when({}), true);
+  assert.match(lit.name, /measures/);
+});

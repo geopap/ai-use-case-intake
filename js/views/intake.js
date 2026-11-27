@@ -129,7 +129,7 @@ function stepBody(n, d) {
     case 3:
       return `<p class="small muted">Answer as the system would actually be used. When unsure, tick it — Legal can clear it in review; a miss is costlier than a false alarm.</p>
         <h3>1 · Prohibited practices (Art. 5) ${ai(d, 'prohibited')}</h3>${checks(d, 'prohibited', PROHIBITED)}
-        <h3>2 · Product safety (Art. 6(1))</h3>${toggle(d, 'safetyComponent', 'It is a safety component of a product covered by EU product legislation (machinery, medical devices, lifts, toys…)')}
+        <h3>2 · Product safety (Art. 6(1))</h3>${toggle(d, 'safetyComponent', 'It is a safety component (its intended purpose is to prevent or mitigate risks to health and safety) of a product covered by EU product legislation (machinery, medical devices, lifts, toys…)')}
         <h3>3 · High-risk areas (Annex III) ${ai(d, 'annexIII')}</h3>${checks(d, 'annexIII', ANNEX_III)}
         ${d.annexIII.length ? `<div class="sub">
           ${toggle(d, 'profiling', `It profiles natural persons — evaluates personal aspects such as performance, reliability or behaviour ${ai(d, 'profiling')}`)}

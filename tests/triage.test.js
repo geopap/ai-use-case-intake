@@ -107,3 +107,22 @@ test('register stats add up', () => {
   assert.equal(Object.values(s.byTier).reduce((a, b) => a + b, 0), USE_CASES.length);
   assert.ok(s.approvedValueK <= s.pipelineValueK);
 });
+
+test('Digital Omnibus: new prohibitions stop the use case and state when they apply', () => {
+  for (const key of ['intimate-imagery', 'csam']) {
+    const r = assess(v({ prohibited: [key], aiType: 'genai' }));
+    assert.equal(r.tier, 'prohibited');
+    assert.equal(r.path, 'stop');
+  }
+  const r = classify(v({ prohibited: ['intimate-imagery'] }));
+  assert.equal(r.reasons[0].ref, 'Art. 5(1)(ba)');
+  assert.ok(r.notes.some((n) => /2 December 2026/.test(n)));
+  assert.equal(classify(v({ prohibited: ['csam'] })).reasons[0].ref, 'Art. 5(1)(bb)');
+});
+
+test('Digital Omnibus: high-risk results carry the postponed application dates', () => {
+  assert.ok(classify(v({ annexIII: ['recruitment'] })).notes.some((n) => /2 December 2027/.test(n)));
+  assert.ok(classify(v({ safetyComponent: true })).notes.some((n) => /2 August 2028/.test(n)));
+  assert.ok(classify(v({ transparency: ['interaction'] })).notes.some((n) => /Art\. 50.*2 August 2026/.test(n)));
+  assert.ok(!classify(v({})).notes.some((n) => /202[678]/.test(n)), 'minimal risk carries no deadline note');
+});
